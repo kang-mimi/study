@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+
+<body>
+    <script>
+        //안녕 내이름은 제시카야 
+        function greet(name) {
+            console.log("안녕 내이름은", name, "야")
+        }
+        greet("제시카")
+        greet("에밀리")
+        greet("할리")
+        // 인자를 세개 받는다 함수명 meetAt
+        // 결과 meetAt(2022) ---2022년
+        // meetAt(2022,11)  ---"2022년 11월"
+        // meetAt(2022,11,22) ---"2022/11/22"
+        function meetAt(year, month, date) {
+            let todayYear = year,
+                todayMonth = month,
+                todayDate = date
+            if (todayDate) {
+                return `${todayYear}/${todayMonth}/${todayDate}`
+            }
+            if (todayMonth) {
+                return `${todayYear}년${todayMonth}월`
+            }
+            if (todayYear) {
+                return `${todayYear}년`
+            }
+        }
+        console.log(meetAt(2022, 11, 22))
+        console.log(meetAt(2022, 11))
+        console.log(meetAt(2022))
+        // findSmallElement 함수를 구현해 주세요
+        // 배열 [100,200,3,0,2,1] 의 값들 중 가장 작은 값을 리턴하시오
+        // 배열이 비어있으면 0으로 리턴하시오
+        // let arr = [100, 200, 3, 0, 2, 1]
+        function findSmallElement(arr) {
+            if (0 > arr.length) {
+                return 0
+            }
+            let result = arr[0];
+            for (let i = 1; i < arr.length; i++) {
+                if (result > arr[i]) {
+                    result = arr[i]
+                }
+            }
+            return result
+        }
+        // console.log(findSmallElement(arr));
+        let smallNumber = findSmallElement([100, 200, 3, 0, 2, 1])
+        console.log(smallNumber)
+        // 돈을 매개변수로 받으면 몇개의 지폐와 동전이 필요한지 최소갯수를 계산해주는 함수를 구하시오
+        let num = [50000, 10000, 5000, 1000, 500, 100]
+        function changeMoney(money) {
+            for (let i = 0; i < num.length; i++) {
+                let result = Math.floor(money / num[i]) //몫
+                console.log(`${num[i]}X${result}`) //배열에 지페 X 몫
+                //console.log(num[i]+"X"+result)
+                money = money - (num[i] * result)
+                //money의 재할당을 해야한다 지폐 X 몫에 money를 뺀 값으로 
+                //재할당해야 배열에 지폐에 money를 대입할때 동일한 money아닌 재할당된 값이 적용된다
+            }
+        }
+        changeMoney(12300)
+
+
+        //  반복문 문제
+        // 1부터 100까지 더하는 반복문 만들기
+        let sum = 0
+        for (let i = 1; i <= 100; i++) {
+            // console.log(`${i}+${i}=${i + i}`)
+            sum += i
+        }
+        console.log(sum)
+        // 1부터 100까지 홀수만 출력하시오
+        // for (let i = 1; i <= 100; i += 2) {
+        //     console.log(i)
+        // }
+        // 짝수
+        // for (let i = 2; i <= 100; i += 2) {
+        //     console.log(i)
+        // }
+        // 1부터 50까지 369결과를 출력하자
+        for (let i = 1; i <= 50; i++) {
+            let numString = i.toString(),
+                result = "";
+            for (let j = 0; j < numString.length; j++) {
+                if (numString[j] == "3" || numString[j] == "6" || numString[j] == "9") {
+                    result = result + "짝"
+                }
+            }
+            console.log(result.length > 0 ? result : i)
+        }
+        // 주어진 숫자가 소수면 true 정수면 false를 출력하시오
+        let n = 10;
+        let boolean = true;
+        if (n === 1) { // 1은 정수이기때문에 false
+            boolean = false;
+        }
+        for (let i = 2; i < n; i++) {
+            if (n % i == 0) { //나머지값이 소수점이면 0과 같지 않기 때문에 true로 나올거고 나머지가 0과 같으면 false가 나온다
+                boolean = false;
+            }
+        }
+    </script>
+</body>
+
+</html>
